@@ -1,7 +1,5 @@
 # Desafio de engenharia de dados da Semantix
 
-<hr />
-
 ## Perguntas teóricas
 
 ### Qual o objetivo do comando cache​ ​em Spark?
@@ -70,17 +68,17 @@ A primeira instrução lê o conteúdo de algum arquivo de texto para um RDD atr
 A segunda registra uma série de transformations que devem ser executadas quando a próxima action sobre
 textFile ocorrer, sendo elas:  
 
-- `.flatMap(line => line.split(" "))`
+- `.flatMap(line => line.split(" "))`__
 	Computa a lista de palavras no arquivo de texto. Uma palavra é representada por qualquer sequência de caracteres
 	que esteja entre, antes ou após de um caractere de espaço (como definido pela função line.split(" "))
-- `.map(word => (word, 1))`
+- `.map(word => (word, 1))`__
 	Computa uma lista de tuplas com base na lista de palavras supracitada. Cada tupla da lista possui a palavra como 
 	primeiro elemento e o número 1 como segundo
-- `.reduceByKey(_ + _)`
+- `.reduceByKey(_ + _)`__
 	Reduz a lista de tuplas da transformação anterior, de forma que palavras duplicadas sejam removidas e 
 	a segunda posição de suas tuplas contenham a onúmero de ocorrências destas respectivas palavras
 Esta sequência de transformations é atribuída a um valor chamado counts.
-
+__
 A terceira executa a action .saveAsTextFile() sobre o valor counts, ou seja, ela dispara a sequência de 
 transformations e, quando a computação termina, salva o resultado em um arquivo de texto novo (cujo
 caminho é passado como parâmetro da função).
