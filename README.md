@@ -28,10 +28,12 @@ O SparkContext é o objeto principal do framework. É através dele que todas as
 
 ### Explique com suas palavras o que é Resilient​ ​Distributed​ ​Datasets​ (RDD).
 
-RDD é uma coleção de elementos distribuída paralelamente pelo cluster (mais comumente um cluster Hadoop).
-Dois tipos de operação podem ser efetuadas sobre o RDD: transformations e actions.
+RDD é uma coleção de elementos distribuída paralelamente pelo cluster (mais comumente um cluster Hadoop).  
+Eles abstraem a complexidade de representação de conjuntos de dados e são tolerantes a falhas do cluster.  
+Dois tipos de operação podem ser efetuadas sobre o RDD: transformations e actions.  
 Transformations não possuem valor de retorno e só são computadas quando a próxima action ocorre (isso é 
-chamado de lazy evaluation). Actions possuem valor de retorno e são os gatilhos das transformations. 
+chamado de lazy evaluation). Cada transformation apenas retorna um novo RDD (e seu respectivo DAG, ou grafo de execução).
+Actions possuem valor de retorno e são os gatilhos das (sequências de) transformations.  
 Um exemplo (em Python) segue abaixo:
 
 ```python
