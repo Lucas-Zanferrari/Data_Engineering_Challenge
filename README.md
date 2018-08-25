@@ -1,5 +1,8 @@
 # Desafio de engenharia de dados da Semantix
 
+O teste prático se encontra dentro do arquivo `semantix_test.ipynb` no repositório.
+As respostas das perguntas teóricas se encontram abaixo.
+
 ## Perguntas teóricas
 
 ### Qual o objetivo do comando cache​ ​em Spark?
@@ -10,8 +13,7 @@ script efetua consultas e transformations sobre o RDD.
 
 
 
-### O mesmo código implementado em Spark é normalmente mais rápido que a implementação equivalente em
-MapReduce. Por quê?
+### O mesmo código implementado em Spark é normalmente mais rápido que a implementação equivalente em MapReduce. Por quê?
 
 Pois ao utilizar o Spark, a computação acontece em memória (exceto se ela não couber na memória). 
 Os MapReduce jobs, em comparação, envolvem diversas operações de input e output do disco rígido por padrão.
@@ -31,12 +33,14 @@ Dois tipos de operação podem ser efetuadas sobre o RDD: transformations e acti
 Transformations não possuem valor de retorno e só são computadas quando a próxima action ocorre (isso é 
 chamado de lazy evaluation). Actions possuem valor de retorno e são os gatilhos das transformations. 
 Um exemplo (em Python) segue abaixo:
-```
+
+```python
 # .filter() é uma transformation. Nada ocorre após esta declaração
 trasformation = rdd.filter(lambda column1: column1 > 10)
 
-# .count() é a primeira action após a transformation, logo, ela é responsável por executar o procedimento registrado
-# pela transformation e, após isso, computar o seu próprio resultado sobre o RDD
+# .count() é a primeira action após a transformation, logo, ela é responsável 
+# por executar o procedimento registrado pela transformation e, após isso, 
+# computar o seu próprio resultado sobre o RDD
 print(transformation.count())
 ```
 
@@ -76,7 +80,7 @@ textFile ocorrer, sendo elas:
 	Reduz a lista de tuplas da transformação anterior, de forma que palavras duplicadas sejam removidas e 
 	a segunda posição de suas tuplas contenham a onúmero de ocorrências destas respectivas palavras
 Esta sequência de transformations é atribuída a um valor chamado counts.  
-  
+
 A terceira executa a action .saveAsTextFile() sobre o valor counts, ou seja, ela dispara a sequência de 
 transformations e, quando a computação termina, salva o resultado em um arquivo de texto novo (cujo
 caminho é passado como parâmetro da função).
