@@ -1,6 +1,6 @@
 # Desafio de engenharia de dados da Semantix
 
-O teste prático se encontra dentro do arquivo `semantix_test.ipynb` no repositório.
+O teste prático se encontra dentro do arquivo `semantix_challenge.ipynb` no repositório.
 As respostas das perguntas teóricas se encontram abaixo.
 
 ## Perguntas teóricas
@@ -45,7 +45,7 @@ print(transformation.count())
 ```
 
 
-### GroupByKey​ ​é menos eficiente que reduceByKey​ ​em grandes dataset. Por quê?
+### GroupByKey​ ​é menos eficiente que reduceByKey​ ​em grandes datasets Por quê?
 
 Devido a forma que ambas as funções trabalham, o GroupByKey tende a requerer que volumes de dados muito maiores 
 sejam enviados pela rede do cluster durante a sua execução. Isso se deve ao fato de que a função reduceByKey é capaz
@@ -58,7 +58,7 @@ da computação, debilitada.
 
 ### Explique o que o código Scala abaixo faz.
 
-```
+```scala
 val textFile = sc.textFile("hdfs://...")
 val counts = textFile.flatMap(line => line.split(" "))
                      .map(word => (word, 1))
