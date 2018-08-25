@@ -66,9 +66,9 @@ val counts = textFile.flatMap(line => line.split(" "))
 counts.saveAsTextFile("hdfs://...")
 ```
 
-A primeira instrução lê o conteúdo de algum arquivo de texto para um RDD atribuído ao valor (imutável) textFile. 
-A segunda registra uma série de transformations que devem ser executadas quando a próxima action sobre
-textFile ocorrer, sendo elas:  
+A primeira instrução lê o conteúdo de algum arquivo de texto presente no sistema de arquivos de um cluster Hadoop 
+para um RDD atribuído ao valor (imutável) textFile. A segunda registra uma série de transformations que devem ser 
+executadas quando a próxima action sobre textFile ocorrer, sendo elas:  
 
 - `.flatMap(line => line.split(" "))`  
 	Computa a lista de palavras no arquivo de texto. Uma palavra é representada por qualquer sequência de caracteres
@@ -83,4 +83,4 @@ Esta sequência de transformations é atribuída a um valor chamado counts.
 
 A terceira executa a action .saveAsTextFile() sobre o valor counts, ou seja, ela dispara a sequência de 
 transformations e, quando a computação termina, salva o resultado em um arquivo de texto novo (cujo
-caminho é passado como parâmetro da função).
+caminho é passado como parâmetro da função), também no sistema de arquivos de um cluster Hadoop.
